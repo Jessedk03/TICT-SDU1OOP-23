@@ -2,6 +2,10 @@ package week1.les1.opdracht2;
 
 public class Main {
     public static void main(String[] args) {
+        /**
+         * Werkboek opdracht 1_2
+         */
+
         String naam1 = "Jan";
         String adres1 = "Nijenoord 1";
         String plaats1 = "Utrecht";
