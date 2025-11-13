@@ -2,6 +2,11 @@ package week1.les1.opdracht3;
 
 public class Main {
     public static void main(String[] args) {
+        /**
+         * Werkboek opdracht 1_3/ 1_4/ 1_5
+         * See the commit history for changes.
+         */
+
         Student student1 = new Student("Jesse de Koe");
         System.out.println("naam: " + student1.getNaam());
         System.out.println("nummer: " + student1.getStudentNummer());
