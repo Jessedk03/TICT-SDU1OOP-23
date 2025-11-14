@@ -6,10 +6,10 @@ public class Zwembad {
 
     public Zwembad() {}
     
-    public Zwembad(double breedte, double lengte, double diepte) {
-        this.breedte = breedte;
-        this.lengte = lengte;
-        this.diepte = diepte;
+    public Zwembad(double brd, double lng, double dip) {
+        breedte = brd;
+        lengte = lng;
+        diepte = dip;
     }
     
     public double getBreedte() {
