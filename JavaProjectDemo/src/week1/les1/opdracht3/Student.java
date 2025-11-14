@@ -8,7 +8,7 @@ public class Student {
         this.naam = naam;
     }
 
-    public Student (String naam, Integer studentNummer) {
+    public Student (String naam, int studentNummer) {
         this.naam = naam;
         this.studentNummer = studentNummer;
     }
