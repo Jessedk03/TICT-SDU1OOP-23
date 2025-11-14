@@ -1,5 +1,9 @@
 public class Zwembad {
-    
+
+    /**
+     * class_diagram.png for the class diagram.
+     */
+
     private double breedte;
     private double lengte;
     private double diepte;
@@ -24,16 +28,16 @@ public class Zwembad {
         return diepte;
     }
 
-    public void setBreedte(double breedte) {
-        this.breedte = breedte;
+    public void setBreedte(double brd) {
+        breedte = brd;
     }
 
-    public void setLengte(double lengte) {
-        this.lengte = lengte;
+    public void setLengte(double lng) {
+        lengte = lng;
     }
 
-    public void setDiepte(double diepte) {
-        this.diepte = diepte;
+    public void setDiepte(double dip) {
+        diepte = dip;
     }
 
     public double inhoud(){
