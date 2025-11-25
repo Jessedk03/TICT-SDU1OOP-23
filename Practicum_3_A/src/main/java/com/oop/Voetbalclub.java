@@ -28,6 +28,10 @@ public class Voetbalclub {
         return (aantalGelijk) + (aantalGewonnen * 3);
     }
 
+    public int aantalGewonnenPunten() {
+        return (aantalGewonnen * 3);
+    }
+
     public int aantalGespeeld() {
         return aantalVerloren + aantalGelijk + aantalGewonnen;
     }
@@ -36,8 +40,12 @@ public class Voetbalclub {
         return naam;
     }
 
+    public void setNaam(String nm) {
+        this.naam = nm;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s %d %d %d %d %d", naam, aantalGespeeld(), aantalGewonnen, aantalGelijk, aantalVerloren, aantalPunten());
+        return String.format("%s %d %d %d %d %d %d", naam, aantalGespeeld(), aantalGewonnenPunten(), aantalGewonnen, aantalGelijk, aantalVerloren, aantalPunten());
     }
 }
