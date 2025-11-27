@@ -1,6 +1,7 @@
 package com.oop;
 
 public class Main {
+    // Code + images: https://github.com/Jessedk03/TICT-SDU1OOP-23/tree/main/Practicum_3_B
     public static void main(String[] args) {
         Cirkel c1 = null, c2 = null;
 
