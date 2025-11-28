@@ -4,7 +4,7 @@ public class Huisdier {
     private String naam;
     private String ras;
     private double gewicht;
-    private Eigenaar eigenaar;
+    private Eigenaar baasje;
 
     public Huisdier(String nm, String r) {
         naam = nm;
@@ -16,11 +16,11 @@ public class Huisdier {
     public String getRas()  { return ras; }
 
     public Eigenaar getBaasje() {
-        return eigenaar;
+        return baasje;
     }
 
     public void setBaasje(Eigenaar e) {
-        eigenaar = e;
+        baasje = e;
     }
 
     public String toString() {
