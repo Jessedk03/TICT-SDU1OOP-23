@@ -71,6 +71,6 @@ public class AutoHuur {
             s += huurder.toString();
         }
 
-        return String.format("%s\n\taantal dagen: %d en dat kost: %.2f", s, aantalDagen, totaalPrijs());
+        return String.format("%s\n\taantal dagen: %d en dat kost: %.2f", s, getAantalDagen(), totaalPrijs());
     }
 }
