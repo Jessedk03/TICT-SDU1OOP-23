@@ -9,18 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AutoHuurTest {
 
     private Klant k;
+    private AutoHuur ah;
 
     @BeforeEach
     public void setup() {
         k = new Klant("Jesse de Koe");
         k.setKorting(10);
+        ah = new AutoHuur();
     }
 
     @Test
     public void rentCarWithCustomerWithoutDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
         k.setKorting(0);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
@@ -30,20 +32,20 @@ public class AutoHuurTest {
 
     @Test
     public void rentCarWithCustomerWithIncorrectDiscount() {
-        k.setKorting(-33);
+        k.setKorting(-10);
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
 
-        assertEquals(66, ah.totaalPrijs());
+        assertEquals(66, ah.totaalPrijs()); // no discount applied
     }
 
     @Test
     public void rentCarWithCustomerWithDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
@@ -55,7 +57,7 @@ public class AutoHuurTest {
     public void rentCarWithCustomerWithHundredPercentDiscount() {
         k.setKorting(101);
         Auto a = new Auto("Ford Fiesta Ecoboost", 500);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setAantalDagen(20);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
@@ -66,7 +68,7 @@ public class AutoHuurTest {
     @Test
     public void rentCarWithFreePricePerDayWithCustomerWithDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 0);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setAantalDagen(3);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
@@ -78,9 +80,26 @@ public class AutoHuurTest {
     public void rentCarWithNegativeSetDaysOfRent() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Auto a = new Auto("Ford Fiesta Ecoboost", 10);
-            AutoHuur ah = new AutoHuur();
 
             ah.setAantalDagen(-3);
+
+            ah.setGehuurdeAuto(a);
+            ah.setHuurder(k);
+
+        });
+
+        String expectedMessage = "Zero or Negative aD parameter not allowed";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void rentCarWithZeroSetDaysOfRent() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Auto a = new Auto("Ford Fiesta Ecoboost", 10);
+
+            ah.setAantalDagen(0);
 
             ah.setGehuurdeAuto(a);
             ah.setHuurder(k);
@@ -97,7 +116,6 @@ public class AutoHuurTest {
     public void rentCarWithNegativeSetPricePerDay() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Auto a = new Auto("Ford Fiesta Ecoboost", -10);
-            AutoHuur ah = new AutoHuur();
 
             ah.setAantalDagen(3);
 
@@ -121,10 +139,11 @@ public class AutoHuurTest {
     @Test
     public void toStringMethodOutputForTotalPrice() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 20);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setAantalDagen(3);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
+
         String toStringMethod = ah.toString();
 
         assertTrue(toStringMethod.endsWith(String.format("%.2f", ah.totaalPrijs())));
@@ -132,7 +151,6 @@ public class AutoHuurTest {
 
     @Test
     public void toStringMethodOutputForTotalPriceWithoutCar() {
-        AutoHuur ah = new AutoHuur();
         ah.setHuurder(k);
         String toStringMethod = ah.toString();
 
@@ -142,7 +160,7 @@ public class AutoHuurTest {
     @Test
     public void toStringMethodOutputForTotalPriceWithoutCustomer() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 50);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setGehuurdeAuto(a);
         String toStringMethod = ah.toString();
 
@@ -151,7 +169,6 @@ public class AutoHuurTest {
 
     @Test
     public void toStringMethodOutputWithNoCar() {
-        AutoHuur ah = new AutoHuur();
         ah.setHuurder(k);
         String toStringMethod = ah.toString();
 
@@ -161,7 +178,7 @@ public class AutoHuurTest {
     @Test
     public void toStringMethodOutputWithNoCustomer() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 50);
-        AutoHuur ah = new AutoHuur();
+        
         ah.setGehuurdeAuto(a);
         String toStringMethod = ah.toString();
 
@@ -170,7 +187,6 @@ public class AutoHuurTest {
 
     @Test
     public void toStringMethodOutputWithNoCustomerAndNorCar() {
-        AutoHuur ah = new AutoHuur();
         String toStringMethod = ah.toString();
 
         assertTrue(toStringMethod.contains("er is geen huurder bekend"));
