@@ -19,12 +19,13 @@ public class AutoHuurTest {
     @Test
     public void rentCarWithCustomerWithoutDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
+        k.setKorting(0);
         AutoHuur ah = new AutoHuur();
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
 
-        assertEquals(59.4, ah.totaalPrijs());
+        assertEquals(66, ah.totaalPrijs());
     }
 
     @Test
