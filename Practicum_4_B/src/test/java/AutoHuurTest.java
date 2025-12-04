@@ -14,15 +14,14 @@ public class AutoHuurTest {
     @BeforeEach
     public void setup() {
         k = new Klant("Jesse de Koe");
-        k.setKorting(10);
         ah = new AutoHuur();
     }
 
     @Test
     public void rentCarWithCustomerWithoutDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
+
         k.setKorting(0);
-        
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
@@ -32,9 +31,9 @@ public class AutoHuurTest {
 
     @Test
     public void rentCarWithCustomerWithIncorrectDiscount() {
-        k.setKorting(-10);
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
-        
+
+        k.setKorting(-10);
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
@@ -45,7 +44,8 @@ public class AutoHuurTest {
     @Test
     public void rentCarWithCustomerWithDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
-        
+
+        k.setKorting(10);
         ah.setHuurder(k);
         ah.setGehuurdeAuto(a);
         ah.setAantalDagen(3);
@@ -55,9 +55,9 @@ public class AutoHuurTest {
 
     @Test
     public void rentCarWithCustomerWithHundredPercentDiscount() {
-        k.setKorting(101);
         Auto a = new Auto("Ford Fiesta Ecoboost", 500);
-        
+        k.setKorting(101);
+
         ah.setAantalDagen(20);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
@@ -68,7 +68,8 @@ public class AutoHuurTest {
     @Test
     public void rentCarWithFreePricePerDayWithCustomerWithDiscount() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 0);
-        
+
+        k.setKorting(10);
         ah.setAantalDagen(3);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
@@ -81,8 +82,8 @@ public class AutoHuurTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Auto a = new Auto("Ford Fiesta Ecoboost", 10);
 
+            k.setKorting(10);
             ah.setAantalDagen(-3);
-
             ah.setGehuurdeAuto(a);
             ah.setHuurder(k);
 
@@ -98,6 +99,7 @@ public class AutoHuurTest {
     public void rentCarWithZeroSetDaysOfRent() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22);
 
+        k.setKorting(10);
         ah.setAantalDagen(0);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
@@ -109,8 +111,8 @@ public class AutoHuurTest {
     public void rentCarWithZeroValues() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 0);
 
-        ah.setAantalDagen(0);
         k.setKorting(0);
+        ah.setAantalDagen(0);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
 
@@ -122,8 +124,8 @@ public class AutoHuurTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Auto a = new Auto("Ford Fiesta Ecoboost", -10);
 
+            k.setKorting(10);
             ah.setAantalDagen(3);
-
             ah.setGehuurdeAuto(a);
             ah.setHuurder(k);
         });
@@ -144,7 +146,8 @@ public class AutoHuurTest {
     @Test
     public void toStringMethodOutputForTotalPrice() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 20);
-        
+
+        k.setKorting(10);
         ah.setAantalDagen(3);
         ah.setGehuurdeAuto(a);
         ah.setHuurder(k);
@@ -156,6 +159,7 @@ public class AutoHuurTest {
 
     @Test
     public void toStringMethodOutputForTotalPriceWithoutCar() {
+        k.setKorting(10);
         ah.setHuurder(k);
         String toStringMethod = ah.toString();
 
@@ -165,7 +169,8 @@ public class AutoHuurTest {
     @Test
     public void toStringMethodOutputForTotalPriceWithoutCustomer() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 50);
-        
+
+        k.setKorting(10);
         ah.setGehuurdeAuto(a);
         String toStringMethod = ah.toString();
 
@@ -174,6 +179,7 @@ public class AutoHuurTest {
 
     @Test
     public void toStringMethodOutputWithNoCar() {
+        k.setKorting(10);
         ah.setHuurder(k);
         String toStringMethod = ah.toString();
 
@@ -183,7 +189,7 @@ public class AutoHuurTest {
     @Test
     public void toStringMethodOutputWithNoCustomer() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 50);
-        
+
         ah.setGehuurdeAuto(a);
         String toStringMethod = ah.toString();
 
