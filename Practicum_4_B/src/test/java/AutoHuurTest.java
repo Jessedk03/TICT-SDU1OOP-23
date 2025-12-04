@@ -96,20 +96,25 @@ public class AutoHuurTest {
 
     @Test
     public void rentCarWithZeroSetDaysOfRent() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Auto a = new Auto("Ford Fiesta Ecoboost", 10);
+        Auto a = new Auto("Ford Fiesta Ecoboost", 22);
 
-            ah.setAantalDagen(0);
+        ah.setAantalDagen(0);
+        ah.setGehuurdeAuto(a);
+        ah.setHuurder(k);
 
-            ah.setGehuurdeAuto(a);
-            ah.setHuurder(k);
+        assertEquals(0, ah.totaalPrijs());
+    }
 
-        });
+    @Test
+    public void rentCarWithZeroValues() {
+        Auto a = new Auto("Ford Fiesta Ecoboost", 0);
 
-        String expectedMessage = "Zero or Negative aD parameter not allowed";
-        String actualMessage = exception.getMessage();
+        ah.setAantalDagen(0);
+        k.setKorting(0);
+        ah.setGehuurdeAuto(a);
+        ah.setHuurder(k);
 
-        assertTrue(actualMessage.contains(expectedMessage));
+        assertEquals(0, ah.totaalPrijs());
     }
 
     @Test
