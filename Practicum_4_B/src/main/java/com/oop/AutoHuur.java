@@ -8,7 +8,7 @@ public class AutoHuur {
     public AutoHuur() {}
 
     public void setAantalDagen(int aD) throws IllegalArgumentException {
-        if (aD <= 0) {
+        if (aD < 0) {
             throw new IllegalArgumentException("Zero or Negative aD parameter not allowed");
         }
 
@@ -34,6 +34,26 @@ public class AutoHuur {
     public Klant getHuurder() {
         return huurder;
     }
+
+    /**
+     * a = Amount of days renting
+     * e = Price per day
+     * p = Percent customer gets off, if any.
+     *
+     * Equation:
+     *  - Step 1: calculate the total with no sale:
+     *  totaalZonderKorting = (e * a)
+     *
+     *  - Step 2: calculate the discount:
+     *  korting = (totaalZonderKorting / 100 * huurder.getKorting())
+     *
+     *  - Step 3: calculate the total price to pay:
+     *  The discount is calculated as a percentage of the total price, and subtracted from the total
+     *
+     *  totaalPrijs = totaalZonderKorting - korting
+     *
+     *  (e * a) - (totaalZonderKorting / 100 * huurder.getKorting())
+     */
 
     public double totaalPrijs() {
         if (gehuurdeAuto == null) {
