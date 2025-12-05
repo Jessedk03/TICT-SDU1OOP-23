@@ -50,7 +50,7 @@ public class VoetbalclubTest {
 
     @Test
     public void calculateScoreWithIncorrectInput() {
-        v.verwerkResultaat('a');
+        v.verwerkResultaat('x');
 
         assertEquals(0, v.aantalPunten());
         assertEquals(0, v.aantalGespeeld());
@@ -125,7 +125,8 @@ public class VoetbalclubTest {
         v.verwerkResultaat('w');
         v.verwerkResultaat('w');
         v.verwerkResultaat('w');
+        v.verwerkResultaat('w');
 
-        assertEquals(15, v.aantalPunten());
+        assertEquals(18, v.aantalPunten());
     }
 }
