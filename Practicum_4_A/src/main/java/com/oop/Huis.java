@@ -19,7 +19,7 @@ public class Huis {
     }
 
     /**
-     * Here is apply the Guard pattern:
+     * Here I apply the Guard pattern:
      * If the required data (huisbaas in this case) is missing, return early to avoid unnecessary processing.
      * https://en.wikipedia.org/wiki/Guard_(computer_science)
      */
