@@ -18,7 +18,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithCustomerWithoutDiscount() {
+    public void huurAutoMetKlantZonderKorting() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
 
         k.setKorting(0);
@@ -30,7 +30,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithCustomerWithIncorrectDiscount() {
+    public void huurAutoMetKlantMetFoutieveKorting() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
 
         k.setKorting(-10);
@@ -42,7 +42,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithCustomerWithDiscount() {
+    public void huurAutoMetKlantMetKorting() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22.0);
 
         k.setKorting(10);
@@ -54,7 +54,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithCustomerWithHundredPercentDiscount() {
+    public void huurAutoMetKlantMetHonderdProcentKorting() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 500);
         k.setKorting(101);
 
@@ -66,7 +66,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithFreePricePerDayWithCustomerWithDiscount() {
+    public void huurAutoMetGratisPrijsPerDagMetKlantMetKorting() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 0);
 
         k.setKorting(10);
@@ -78,7 +78,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithNegativeSetDaysOfRent() {
+    public void huurAutoMetNegatiefAantalDagen() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Auto a = new Auto("Ford Fiesta Ecoboost", 10);
 
@@ -96,7 +96,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithZeroSetDaysOfRent() {
+    public void huurAutoMetNulAantalDagen() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 22);
 
         k.setKorting(10);
@@ -108,7 +108,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithZeroValues() {
+    public void huurAutoMetNulWaarden() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 0);
 
         k.setKorting(0);
@@ -120,7 +120,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void rentCarWithNegativeSetPricePerDay() {
+    public void huurAutoMetNegatiefPrijsPerDag() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Auto a = new Auto("Ford Fiesta Ecoboost", -10);
 
@@ -144,7 +144,7 @@ public class AutoHuurTest {
      */
 
     @Test
-    public void toStringMethodOutputForTotalPrice() {
+    public void toStringMethodeOutputVoorTotaalPrijs() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 20);
 
         k.setKorting(10);
@@ -158,7 +158,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void toStringMethodOutputForTotalPriceWithoutCar() {
+    public void toStringMethodeOutputVoorTotaalPrijsZonderAuto() {
         k.setKorting(10);
         ah.setHuurder(k);
         String toStringMethod = ah.toString();
@@ -167,7 +167,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void toStringMethodOutputForTotalPriceWithoutCustomer() {
+    public void toStringMethodeOutputVoorTotaalPrijsZonderKlant() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 50);
 
         k.setKorting(10);
@@ -178,7 +178,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void toStringMethodOutputWithNoCar() {
+    public void toStringMethodeOutputZonderAuto() {
         k.setKorting(10);
         ah.setHuurder(k);
         String toStringMethod = ah.toString();
@@ -187,7 +187,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void toStringMethodOutputWithNoCustomer() {
+    public void toStringMethodeOutputZonderKlant() {
         Auto a = new Auto("Ford Fiesta Ecoboost", 50);
 
         ah.setGehuurdeAuto(a);
@@ -197,7 +197,7 @@ public class AutoHuurTest {
     }
 
     @Test
-    public void toStringMethodOutputWithNoCustomerAndNorCar() {
+    public void toStringMethodeOutputZonderKlantOfAuto() {
         String toStringMethod = ah.toString();
 
         assertTrue(toStringMethod.contains("er is geen huurder bekend"));
