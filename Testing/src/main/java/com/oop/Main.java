@@ -1,3 +1,5 @@
+package com.oop;
+
 public class Main {
     public static void main(String[] arg) {
         Zwembad z1 = new Zwembad(2.0, 5.5, 1.5);
@@ -14,5 +16,6 @@ public class Main {
         double inh = z2.inhoud();
         System.out.println("GEGEVENS ZWEMBAD: " + z2.toString());
         System.out.println("BEREKENDE INHOUD: " + z2.inhoud());
+        // System.out.println("BEREKENDE INHOUD: " + inh);
     }
 }
