@@ -3,7 +3,6 @@ package com.oop;
 public class Auto {
     private String type;
     private double prijsPerDag;
-    private AutoHuur[] autoHuur;
 
     public Auto(String tp, double prPd) throws IllegalArgumentException {
         if (prPd < 0.0) {

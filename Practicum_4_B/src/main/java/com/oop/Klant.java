@@ -3,7 +3,6 @@ package com.oop;
 public class Klant {
     private String naam;
     private double kortingsPercentage;
-    private AutoHuur[] autoHuur;
 
     public Klant(String nm) {
         this.naam = nm;
