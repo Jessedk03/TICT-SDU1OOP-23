@@ -102,7 +102,7 @@ public class VoetbalclubTest {
         v.verwerkResultaat('v');
 
         String[] toStringMethodSplitted = v.toString().split("\s");
-
+        System.out.println(v.toString());
         for (int i = 0; i < toStringMethodSplitted.length / 2; i++) {
             String reversedArray = toStringMethodSplitted[i];
             toStringMethodSplitted[i] =  toStringMethodSplitted[toStringMethodSplitted.length - i - 1];
