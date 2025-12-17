@@ -1,6 +1,7 @@
 package com.oop;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,9 +23,16 @@ public class Main {
         System.out.println("p1 verkoopt g1 aan p2:"+(p1.verkoop(g1, p2) ? "" : " niet")+" gelukt");
         System.out.println("\np1: " +p1+ "\n\np2: " +p2+ "\n");
 
+        // Practicum_6_B Task 1
         Game game1 = p1.zoekGameOpNaam("Just Cause 3");
         System.out.println("p1 heeft Just Cause 3 " + (game1 != null ? "wel!" : "niet!"));
 
+        // Practicum_6_B Task 2
+        ArrayList<Game> teKoop = new ArrayList<Game>();
+        teKoop.add(new Game("Mario Kart 8", 2019, 35.00));
+        teKoop.add(g1);
+        ArrayList<Game> nogNietInBezit = p1.bepaalGamesNietInBezit(teKoop);
+        System.out.println("p1 heeft de volgende games nog niet: " + nogNietInBezit.toString());
     }
 }
 

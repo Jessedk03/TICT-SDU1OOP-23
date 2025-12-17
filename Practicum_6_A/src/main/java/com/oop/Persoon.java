@@ -39,6 +39,7 @@ public class Persoon {
         return false;
     }
 
+    // Practicum_6_B Task 1
     public Game zoekGameOpNaam(String gNm) {
         for (Game g : mijnGames) {
             if (gNm.equals(g.getNaam())) {
@@ -46,6 +47,17 @@ public class Persoon {
             }
         }
         return null;
+    }
+
+    // Practicum_6_B Task 2
+    public ArrayList<Game> bepaalGamesNietInBezit(ArrayList<Game> gameList) {
+        ArrayList<Game> gamesNietInBezit = new ArrayList<>();
+        for (Game gL : gameList) {
+            if (!mijnGames.contains(gL)) {
+                gamesNietInBezit.add(gL);
+            }
+        }
+        return gamesNietInBezit;
     }
 
     @Override
