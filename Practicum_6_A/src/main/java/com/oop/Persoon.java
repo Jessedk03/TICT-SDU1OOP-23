@@ -39,6 +39,15 @@ public class Persoon {
         return false;
     }
 
+    public Game zoekGameOpNaam(String gNm) {
+        for (Game g : mijnGames) {
+            if (gNm.equals(g.getNaam())) {
+                return g;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder mijnGamesList = new StringBuilder();
