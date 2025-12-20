@@ -3,21 +3,23 @@ package com.oop;
 import java.util.ArrayList;
 
 public class StringProcessor {
-    private ArrayList<Object> processen = new ArrayList<>();
+    private ArrayList<OpmaakProces> processen;
 
-    public StringProcessor(){}
+    public StringProcessor(){
+        this.processen = new ArrayList<>();
+    }
 
     public String verwerk(String input) {
         String edited = input;
-        for (Object p : processen) {
-            if (p instanceof OpmaakProces) {
-                edited = ((OpmaakProces)p).maakOp(edited);
-            }
+
+        for (OpmaakProces p : processen) {
+            edited = p.maakOp(edited);
         }
+
         return edited;
     }
 
-    public void voegProcesToe(Object process) {
+    public void voegProcesToe(OpmaakProces process) {
         if (process != null) {
             processen.add(process);
         }
