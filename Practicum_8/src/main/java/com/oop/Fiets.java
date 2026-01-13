@@ -1,5 +1,7 @@
 package com.oop;
 
+import java.time.LocalDate;
+
 public class Fiets extends Voertuig {
     private int frameNummer;
 
@@ -10,6 +12,18 @@ public class Fiets extends Voertuig {
 
     @Override
     public double huidigeWaarde() {
-        return 0;
+        if (super.bouwJaar >= LocalDate.now().getYear()) {
+            return super.nieuwPrijs;
+        }
+
+        int jaarVerschil = Math.max((LocalDate.now().getYear() - super.bouwJaar), 0);
+
+        double berekendePrijs = super.nieuwPrijs - super.nieuwPrijs * 0.1 * jaarVerschil;
+
+        if (berekendePrijs < 0) {
+            return this.nieuwPrijs - this.nieuwPrijs * 0.9;
+        }
+
+        return berekendePrijs;
     }
 }

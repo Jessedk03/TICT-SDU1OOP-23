@@ -14,13 +14,25 @@ public class BedrijfsInventaris {
     }
 
     public void schafAan(Goed g) {
-        if (g != null) {
+        if (g != null && !alleGoederen.contains(g) && budget >= g.huidigeWaarde()) {
+            this.budget = this.budget - g.huidigeWaarde();
             this.alleGoederen.add(g);
         }
     }
 
+    public ArrayList<Goed> getAlleGoederen() {
+        return this.alleGoederen;
+    }
+
     @Override
     public String toString() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+
+        for (Goed g : alleGoederen) {
+            sb.append("\n");
+            sb.append(g);
+        }
+
+        return bedrijfsNaam + sb;
     }
 }

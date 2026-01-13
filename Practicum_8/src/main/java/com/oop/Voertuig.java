@@ -11,13 +11,29 @@ abstract class Voertuig implements Goed {
         this.bouwJaar = jr;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        return false;
+        boolean result = false;
+
+        if(obj instanceof Voertuig) {
+            Voertuig v = (Voertuig) obj;
+
+            if (this.getType().equals(v.getType()) && this.nieuwPrijs == v.nieuwPrijs && this.bouwJaar == v.bouwJaar) {
+                result = true;
+            }
+
+            return result;
+        }
+
+        return result;
     }
 
     @Override
     public String toString() {
-        return "";
+        return String.format("Voertuig: %s met bouwjaar %d heeft een waarde van: \u20ac%.2f", this.type, this.bouwJaar, this.nieuwPrijs);
     }
 }
