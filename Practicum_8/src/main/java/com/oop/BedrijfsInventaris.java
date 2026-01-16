@@ -33,6 +33,6 @@ public class BedrijfsInventaris {
             sb.append(g);
         }
 
-        return bedrijfsNaam + sb;
+        return String.format("%s, budget: \u20ac%.2f. \nMet het volgende in de inventaris:%s", this.bedrijfsNaam, this.budget, sb);
     }
 }
