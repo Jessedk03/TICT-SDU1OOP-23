@@ -26,4 +26,17 @@ public class Fiets extends Voertuig {
 
         return berekendePrijs;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+
+        if (obj instanceof Fiets) {
+            Fiets fiets = (Fiets) obj;
+            if (frameNummer == fiets.frameNummer && super.equals(fiets)) {
+                result = true;
+            }
+        }
+        return result;
+    }
 }

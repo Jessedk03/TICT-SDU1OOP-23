@@ -45,8 +45,8 @@ public class Computer implements Goed {
         boolean result = false;
 
         if (obj instanceof Computer) {
-            Computer c = (Computer) obj;
-            if (this.getType().equals(c.getType()) && this.getMacAdress().equals(c.getMacAdress())) {
+            Computer computer = (Computer) obj;
+            if (this.getType().equals(computer.getType()) && this.getMacAdress().equals(computer.getMacAdress()) && this.aanschafPrijs == computer.aanschafPrijs && this.productieJaar == computer.productieJaar) {
                 result = true;
             }
             return result;

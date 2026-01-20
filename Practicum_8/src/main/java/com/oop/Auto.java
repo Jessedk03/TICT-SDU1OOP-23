@@ -38,7 +38,7 @@ public class Auto extends Voertuig {
         if (obj instanceof Auto) {
             Auto auto = (Auto) obj;
 
-            if (this.kenteken.equals(auto.getKenteken())) {
+            if (this.kenteken.equals(auto.getKenteken()) && super.equals(auto)) {
                 result = true;
             }
 
